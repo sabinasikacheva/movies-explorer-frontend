@@ -16,6 +16,7 @@
 }
 
 .card__name {
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: normal;
