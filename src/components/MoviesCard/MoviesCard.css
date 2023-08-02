@@ -16,7 +16,6 @@
 }
 
 .card__name {
-  font-family: Inter;
   font-size: 13px;
   font-weight: 500;
   line-height: normal;
@@ -39,7 +38,6 @@
   padding: 0;
   width: 270px;
   height: 151px;
-  /* object-fit: cover; */
   object-fit: contain;
   object-position: center;
 }

@@ -13,11 +13,11 @@ function Login() {
       <form className="login-form" action="#" name="login-form" noValidate>
         <fieldset className="login-form__fieldset">
           <div className="login-form__input-container">
-            <label className="login-form__label" for="login-form__input-email">E-mail</label>
-            <input className="login-form__input" type="email" id="login-form__input-email" placeholder='Введите e-mail' name="email" required minLength="5" maxLength="30" />
+            <label className="login-form__label" htmlFor="login-form__input-email">E-mail</label>
+            <input className="login-form__input" type="email" id="login-form__input-email" placeholder='Введите e-mail' name="email" required />
           </div>
           <div className="login-form__input-container">
-            <label className="login-form__label" for='login-form__input-password'>Пароль</label>
+            <label className="login-form__label" htmlFor='login-form__input-password'>Пароль</label>
             <input className="login-form__input" type="password" id="login-form__input-password" placeholder='Введите пароль' name="password" required minLength="6" maxLength="30" />
           </div>
         </fieldset>

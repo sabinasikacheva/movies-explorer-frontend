@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
 import Header from '../Header/Header';
+import { Link } from 'react-router-dom';
 
 function Profile({ loggedIn }) {
 
@@ -58,7 +59,9 @@ function Profile({ loggedIn }) {
             :
               <>
               <button className='profile__btn profile__btn_edit button' type='button' onClick={handleClickEditButton}>Редактировать</button>
-              <button className='profile__btn profile__btn_exit button' type='button'>Выйти из аккаунта</button>
+              <Link to="/">
+                <button className='profile__btn profile__btn_exit button' type='button'>Выйти из аккаунта</button>
+              </Link>
               </>
             } 
           </div>

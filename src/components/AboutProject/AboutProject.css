@@ -99,13 +99,10 @@
     margin-bottom: 93px;
   }
 
-  .aboutproject__subtitle {
-    margin-bottom: 22px;
-  }
-
   .aboutproject__text {
     font-size: 12px;
     line-height: 18px;
+    margin-top: 22px;
   }
 
   .aboutproject__progress {

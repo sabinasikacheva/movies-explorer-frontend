@@ -9,7 +9,7 @@ function MoviesCard() {
   return (
     <li className="card">
       <a href="https://www.youtube.com/watch?v=JORGN8rUjyQ" className="card__link link" target="blank">
-        <img className="card__image" src={Film} alt="Фотография из фильма" />
+        <img className="card__image" src={Film} alt="Фотография из фильма 33 слова о дизайне" />
       </a>
         <div className="card__content">
           <h2 className="card__name">33 слова о дизайне</h2>

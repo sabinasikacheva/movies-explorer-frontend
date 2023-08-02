@@ -13,15 +13,15 @@ function Register() {
       <form className="authorization-form" action="#" name="authorization-form" noValidate>
           <fieldset className="authorization-form__fieldset">
               <div className="authorization-form__input-container">
-                  <label className="authorization-form__label" for="authorization-form__input-name">Имя</label>
+                  <label className="authorization-form__label" htmlFor="authorization-form__input-name">Имя</label>
                   <input className="authorization-form__input" type="text" id="authorization-form__input-name" placeholder="Введите имя" name="name" required minLength="2" maxLength="30" />
               </div>
               <div className="authorization-form__input-container">
-                  <label className="authorization-form__label" for="authorization-form__input-email">E-mail</label>
-                  <input className="authorization-form__input" type="email" id="authorization-form__input-email" placeholder="Введите e-mail" name="email" required minLength="5" maxLength="30" />
+                  <label className="authorization-form__label" htmlFor="authorization-form__input-email">E-mail</label>
+                  <input className="authorization-form__input" type="email" id="authorization-form__input-email" placeholder="Введите e-mail" name="email" />
               </div>
               <div className="authorization-form__input-container">
-                  <label className="authorization-form__label" for="authorization-form__input-password">Пароль</label>
+                  <label className="authorization-form__label" htmlFor="authorization-form__input-password">Пароль</label>
                   <input className="authorization-form__input" type="password" id="authorization-form__input-password" placeholder="Введите пароль" name="password" required minLength="8" maxLength="30" />
               </div>
           </fieldset>
