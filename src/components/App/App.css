@@ -1,0 +1,37 @@
+.app {
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #202020;
+}
+
+.landing-title {
+  width: 100%;
+  max-width: 1140px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.85px;
+  border-bottom: 1px solid #DADADA;
+  padding-bottom: 23px;
+}
+
+@media screen and (max-width: 560px) {
+  .landing-title {
+    font-size: 18px;
+    letter-spacing: -0.7px;
+    padding-bottom: 28px;
+  }
+}
+
+.link:hover {
+  opacity: 0.7;
+  transition: opacity 0.5s ease 0.1s;
+}
+
+.button:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s ease 0.1s;
+}
