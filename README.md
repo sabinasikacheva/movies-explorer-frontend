@@ -2,6 +2,8 @@
 
 Адрес репозитория: https://github.com/sabinasikacheva/movies-explorer-frontend
 
+Ссылка на сайт: https://diploma.sikacheva.nomoredomains.work
+
 ## Используемые технологии:
 
 ## Ссылка на макет
