@@ -106,10 +106,36 @@
   width: 410px;
   padding: 13px 0;
 }
-  
+
+.profile__btn_submit_disabled {
+  color: #303030;
+  background-color: #8B8B8B;
+  cursor: default;
+}
+
+.profile__btn_submit_disabled:hover {
+  transition: none;
+  opacity: 1;
+  cursor: default;
+}
+
 .profile__btn_exit {
   color: #ee3465;
   padding-top: 16px;
+}
+
+.profile__error {
+  display: block;
+  align-self: flex-start;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  max-height: 30px;
+  max-width: 396px;
+  color: #ee3465;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
 }
   
 @media screen and (max-width: 800px) {

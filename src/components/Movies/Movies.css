@@ -7,7 +7,7 @@
   width: 100%;
 }
   
-.movies__add-cards {
+.movies__add-button {
   font-size: 12px;
   font-weight: 500;
   line-height: normal;
@@ -24,6 +24,10 @@
   margin-bottom: 79px;
   margin-top: 49px;
   cursor: pointer;
+}
+
+.movies__add-button-off {
+  display: none;
 }
   
 @media screen and (max-width: 400px) {
