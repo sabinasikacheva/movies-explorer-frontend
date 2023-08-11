@@ -1,11 +1,11 @@
 Данный проект является дипломной работой на курсе веб-разработчик Яндекс.Практикума
 
-Адрес репозитория: https://github.com/sabinasikacheva/movies-explorer-frontend
+## Адрес репозитория: https://github.com/sabinasikacheva/movies-explorer-frontend
 
-Ссылка на сайт: https://diploma.sikacheva.nomoredomains.work
+## Ссылка на pull request: https://github.com/sabinasikacheva/movies-explorer-frontend/pull/2
 
-## Используемые технологии:
+## Ссылка на сайт: https://diploma.sikacheva.nomoredomains.work
 
-## Ссылка на макет
+## Используемые технологии: «React», JS
 
-https://yadi.sk/d/mIGENGj9ZOyPQw
+## Ссылка на макет: https://yadi.sk/d/mIGENGj9ZOyPQw
