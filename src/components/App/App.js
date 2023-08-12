@@ -150,6 +150,20 @@ function App() {
     });
   }
 
+  // Защита навигации на /signin и /signup для авторизированного пользователя
+  const navigateAutorizedUser = () => {
+    const isSigninPage = window.location.pathname === "/signin";
+    const isSignupPage = window.location.pathname === "/signup";
+
+    if ((isSigninPage || isSignupPage) && loggedIn) {
+      return navigate("/");
+    }
+    return;
+  }
+
+  useEffect(() => {
+    navigateAutorizedUser();
+  }, [])
 
 return (
   <CurrentUserContext.Provider value={currentUser}>

@@ -19,6 +19,7 @@ function Movies(props) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [cardsToShow, setCardsToShow] = useState(0);
   const [errorGetAllMovies, setErrorGetAllMovies] = useState(false);
+  //const [originalSearchResults, setOriginalSearchResults] = useState([]);
 
   const getAllMovies = () => {
     const savedAllMoviesLocal = localStorage.getItem("allMoviesLocal");
@@ -33,6 +34,7 @@ function Movies(props) {
           .then((allMovies) => {
             localStorage.setItem("allMoviesLocal", JSON.stringify(allMovies));
             setAllMovies(allMovies);
+            //setOriginalSearchResults(allMovies);
             searchMovies(allMovies, search, checkboxValue, props.setResultSearchMovies, setNotFound);
             setPreloader(false);
           })
@@ -91,9 +93,11 @@ function Movies(props) {
   
     const calculateCardsToShow = () => {
       let newCardsToShow = 0;
-        if (windowWidth >= 769) {
+        if (windowWidth >= 1280) {
+          newCardsToShow = 16;
+        } else if (windowWidth >= 990) {
           newCardsToShow = 12;
-        } else if (windowWidth >= 501) {
+        } else if (windowWidth >= 768) {
           newCardsToShow = 8;
         } else {
           newCardsToShow = 5;
@@ -104,17 +108,30 @@ function Movies(props) {
     const handleShowMore = () => {
       const remainingCards = props.resultSearchMovies.length - cardsToShow;
         let increment;
-        if (windowWidth >= 769) {
-            increment = 3;
+        if (windowWidth >= 1280) {
+          increment = 4;
         }
-        if (windowWidth <= 768) {
-            increment = 2;
+        else if (windowWidth >= 990) {
+          increment = 3;
+        }
+        if (windowWidth <= 990) {
+          increment = 2;
         }
       const newCardsToShow = Math.min(cardsToShow + increment, props.resultSearchMovies.length);
       setCardsToShow(newCardsToShow);
       setShowButton(newCardsToShow < props.resultSearchMovies.length);
     };
+    // useEffect(() => {
+    //   const filteredMovies = checkboxValue
+    //     ? originalSearchResults.filter((card) => card.duration < 40)
+    //     : originalSearchResults; // Apply filter if checkbox is checked
+    //   props.setResultSearchMovies(filteredMovies);
+    // }, [checkboxValue, originalSearchResults]);
 
+    // useEffect(() => {
+    //   searchMovies(originalSearchResults, search, checkboxValue, props.setResultSearchMovies, setNotFound);
+    // }, [checkboxValue, originalSearchResults]);
+    
   return (
     <>
       <Header loggedIn={props.loggedIn} />

@@ -1,8 +1,7 @@
 export function searchMyMovies(movies, search, checkboxValue, setResultSearchMyMovies, setNotFound) {
   const filteredMovies = movies.filter((card) =>
-    Object.values(card).some((value) =>
-      typeof value === "string" && value.toLowerCase().includes(search.toLowerCase())
-    )
+    card.nameRU.toLowerCase().includes(search.toLowerCase()) ||
+    card.nameEN.toLowerCase().includes(search.toLowerCase())
   );
     setResultSearchMyMovies(filteredMovies);
     setNotFound(false);

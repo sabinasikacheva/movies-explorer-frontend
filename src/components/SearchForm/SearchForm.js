@@ -18,7 +18,6 @@ function SearchForm(props) {
   }
   function handleSearchChange(evt) {
     props.setSearch(evt.target.value);
-    searchMovies(props.allMovies, props.search, evt.target.value, props.setResultSearchMovies, props.setNotFound);
     if (window.location.pathname === '/movies') {
       localStorage.setItem("search", evt.target.value);
     }

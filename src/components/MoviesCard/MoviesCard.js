@@ -10,10 +10,6 @@ function MoviesCard(props) {
   const fullUrl = baseUrl + relativePath;
 
   const currentUser = useContext(CurrentUserContext);
-  // длительность фильма в часах и минутах
-  const durationHours = props.card.duration >= 60 ? `${Math.floor(props.card.duration / 60)} ч ` : '';
-  const durationMinut = props.card.duration === 60 ? '' : `${props.card.duration % 60} м`;
-  const duration = durationHours + durationMinut;
 
   const movieData = {
     country: props.card.country,
@@ -37,7 +33,8 @@ function MoviesCard(props) {
       });
         setLike(likeCards.some(card => card.id === props.card.id));
       }
-  }, [props.myCards]);
+//  }, [props.myCards]);
+ }, [props.card.id, props.myCards]);
 
   const handleLikeClick = () => {
     if (like) {
@@ -58,7 +55,11 @@ function MoviesCard(props) {
         }
     }
   };
-
+  // длительность фильма в часах и минутах
+  const durationHours = props.card.duration >= 60 ? `${Math.floor(props.card.duration / 60)} ч ` : '';
+  const durationMinut = props.card.duration === 60 ? '' : `${props.card.duration % 60} м`;
+  const duration = durationHours + durationMinut;
+  
   return (
     <li className="card">
       <a href={props.card.trailerLink}  className="card__link link" target="blank">
