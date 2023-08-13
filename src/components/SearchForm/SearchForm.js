@@ -16,26 +16,26 @@ function SearchForm(props) {
     props.setStartingSearch(false)
     props.getAllMovies()
   }
+
   function handleSearchChange(evt) {
     props.setSearch(evt.target.value);
+    localStorage.setItem("lastSearch", evt.target.value);
     if (window.location.pathname === '/movies') {
       localStorage.setItem("search", evt.target.value);
     }
     if (evt.target.value !== "") {
-      props.setErrorMessageSearchForm("")
+      props.setErrorMessageSearchForm("");
     } else {
-        props.setErrorMessageSearchForm("Введите запрос")
+      props.setErrorMessageSearchForm("Введите запрос");
     }
   }
-
-  function handleCheckboxValueChange(evt) {
-      props.setCheckboxValue(evt.target.checked)
-      searchMovies(props.allMovies, props.search, evt.target.checked, props.setResultSearchMovies, props.setNotFound);
-      if (window.location.pathname === '/movies') {
-          localStorage.setItem("checkboxValue", JSON.stringify(evt.target.checked));
-      }
-
-  }
+  
+  const handleCheckboxValueChange = (evt) => {
+    const newCheckboxValue = evt.target.checked;
+    props.setCheckboxValue(newCheckboxValue);
+    localStorage.setItem("lastCheckboxValue", JSON.stringify(newCheckboxValue));
+    searchMovies(props.allMovies, props.search, newCheckboxValue, props.setResultSearchMovies, props.setNotFound);
+  };
 
   function handleSubmit(evt) {
       evt.preventDefault();
@@ -54,7 +54,6 @@ function SearchForm(props) {
           required
           onChange={handleSearchChange}
           value={props.search}
-          // name="name"
         ></input>
         <button
           className="seachform__button button"

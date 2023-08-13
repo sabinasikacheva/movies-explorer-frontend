@@ -8,8 +8,10 @@ import moviesApi from "../../utils/MoviesApi";
 import { searchMovies } from '../../utils/searchMovies';
 
 function Movies(props) {
-  const [search, setSearch] = useState("");
-  const [checkboxValue, setCheckboxValue] = useState(false);
+  // const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(localStorage.getItem("lastSearch") || '');
+  // const [checkboxValue, setCheckboxValue] = useState(false);
+  const [checkboxValue, setCheckboxValue] = useState(JSON.parse(localStorage.getItem("lastCheckboxValue")) || false);
   const [startingSearch, setStartingSearch] = useState(false);
   const [allMovies, setAllMovies] = useState([]);
   const [notFound, setNotFound] = useState(false);
@@ -19,10 +21,9 @@ function Movies(props) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [cardsToShow, setCardsToShow] = useState(0);
   const [errorGetAllMovies, setErrorGetAllMovies] = useState(false);
-  //const [originalSearchResults, setOriginalSearchResults] = useState([]);
 
-  const getAllMovies = () => {
-    const savedAllMoviesLocal = localStorage.getItem("allMoviesLocal");
+    const getAllMovies = () => {
+      const savedAllMoviesLocal = localStorage.getItem("allMoviesLocal");
       if (savedAllMoviesLocal) {
         setAllMovies(JSON.parse(savedAllMoviesLocal));
         searchMovies(JSON.parse(savedAllMoviesLocal), search, checkboxValue, props.setResultSearchMovies, setNotFound);
@@ -33,36 +34,26 @@ function Movies(props) {
         moviesApi.getCards()
           .then((allMovies) => {
             localStorage.setItem("allMoviesLocal", JSON.stringify(allMovies));
+            localStorage.setItem("lastSearch", search); // Сохранение последнего поиска
+            localStorage.setItem("lastCheckboxValue", JSON.stringify(checkboxValue)); // Сохранение состояния чекбокса
             setAllMovies(allMovies);
-            //setOriginalSearchResults(allMovies);
             searchMovies(allMovies, search, checkboxValue, props.setResultSearchMovies, setNotFound);
             setPreloader(false);
           })
-            .catch((err) => {
-              console.error(err);
-              setErrorGetAllMovies(true)
-            });
-        }
+          .catch((err) => {
+            console.error(err);
+            setErrorGetAllMovies(true);
+          });
+      }
     };
-
+    
     useEffect(() => {
-      const savedLocalSearch = localStorage.getItem("search");
-      const savedLocalCheckboxValue = localStorage.getItem("checkboxValue");
-      const savedLocalResultSearchMovies = localStorage.getItem("resultSearchMovies");
-      if (savedLocalSearch) {
-        setSearch(savedLocalSearch);
+      // Восстановление последних результатов поиска из localStorage
+      const lastResultSearchMovies = JSON.parse(localStorage.getItem("lastResultSearchMovies"));
+      if (lastResultSearchMovies) {
+        props.setResultSearchMovies(lastResultSearchMovies);
       }
-      if (savedLocalCheckboxValue) {
-        setCheckboxValue(JSON.parse(savedLocalCheckboxValue));
-      }
-      if (savedLocalResultSearchMovies) {
-        props.setResultSearchMovies(JSON.parse(savedLocalResultSearchMovies));
-        if (JSON.parse(savedLocalResultSearchMovies).length > 0) {
-          setStartingSearch(false);
-        } else {
-          setStartingSearch(true);
-        }
-      }
+      getAllMovies();
     }, []);
     
     useEffect(() => {
@@ -121,16 +112,6 @@ function Movies(props) {
       setCardsToShow(newCardsToShow);
       setShowButton(newCardsToShow < props.resultSearchMovies.length);
     };
-    // useEffect(() => {
-    //   const filteredMovies = checkboxValue
-    //     ? originalSearchResults.filter((card) => card.duration < 40)
-    //     : originalSearchResults; // Apply filter if checkbox is checked
-    //   props.setResultSearchMovies(filteredMovies);
-    // }, [checkboxValue, originalSearchResults]);
-
-    // useEffect(() => {
-    //   searchMovies(originalSearchResults, search, checkboxValue, props.setResultSearchMovies, setNotFound);
-    // }, [checkboxValue, originalSearchResults]);
     
   return (
     <>
