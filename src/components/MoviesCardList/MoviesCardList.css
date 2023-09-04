@@ -19,6 +19,11 @@
   column-gap: 20px;
   width: calc(100% - 2 * 70px);
 }
+
+.moviescardlist__text {
+  color: #EE3465;
+  text-align: center;
+}
   
 @media screen and (max-width: 800px) {
   .moviescardlist__cards {

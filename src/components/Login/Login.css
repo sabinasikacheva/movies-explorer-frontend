@@ -91,6 +91,7 @@
 .login-form__error {
   margin: 0;
   padding: 0;
+  margin-top: 10px;
   height: 30px;
   max-width: 396px;
   font-weight: 400;
@@ -127,6 +128,12 @@
 .login-form__button:hover {
   opacity: 0.7;
   transition: opacity 0.4s linear 0.1s;
+}
+
+.login-form__button_disabled {
+  background-color: #8B8B8B;
+  color: #303030;
+  cursor: default;
 }
   
 .login-form__question {
